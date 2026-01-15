@@ -4,7 +4,7 @@
 
 Проект модульный и состоит из отдельных компонентов системы:
 
-- Сервис Агента — основной оркестратор системы (`./agent_service`). Подробнее: [`.kilocode/rules/agent_service.md`](.kilocode/rules/agent_service.md)
-- RAG сервис реализующий гибридный и семантический поиск по учебнику Яндекса по ML (`./rag`). Подробнее: [`.kilocode/rules/rag.md`](.kilocode/rules/rag.md)
-- Генератор квизов, позволяющий генерировать вопросы на основе markdown файлов (`./test_generator`). Подробнее: [`.kilocode/rules/test_generator.md`](.kilocode/rules/test_generator.md)
-- Web UI веб интерфейс с которым взаимодействует пользователь (`./web_ui_service`). Подробнее: [`.kilocode/rules/web_ui_service.md`](.kilocode/rules/web_ui_service.md)
+- Сервис Агента — основной оркестратор системы (`./agent_service`). Подробнее: [`agent_service/README.md`](agent_service/README.md) и [`.kilocode/rules/agent_service.md`](.kilocode/rules/agent_service.md)
+- RAG сервис реализующий гибридный и семантический поиск по учебнику Яндекса по ML (`./rag`). Подробнее: [`rag/README.md`](rag/README.md) и [`.kilocode/rules/rag.md`](.kilocode/rules/rag.md)
+- Генератор квизов, позволяющий генерировать вопросы на основе markdown файлов (`./test_generator`). Подробнее: [`test_generator/README.md`](test_generator/README.md) и [`.kilocode/rules/test_generator.md`](.kilocode/rules/test_generator.md)
+- Web UI веб интерфейс с которым взаимодействует пользователь (`./web_ui_service`). Подробнее: [`web_ui_service/README.md`](web_ui_service/README.md) и [`.kilocode/rules/web_ui_service.md`](.kilocode/rules/web_ui_service.md)
