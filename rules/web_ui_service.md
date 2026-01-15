@@ -20,7 +20,17 @@
 
 **Для применения изменений во фронтенде необходимо выполнить пересборку:**
 ```bash
-cd web_ui_service && docker compose -f docker-compose-dev.yml up -d --build frontend
+# Остановить текущие контейнеры
+./stop-dev.sh
+
+# Запустить снова (скрипт автоматически пересоберет образы если нужно, или можно использовать docker compose build)
+./start-dev.sh
+```
+
+Также можно пересобрать только frontend:
+```bash
+docker compose -f web_ui_service/docker-compose-dev.yml build frontend
+./start-dev.sh
 ```
 
 ### WebSocket взаимодействие
@@ -32,4 +42,4 @@ cd web_ui_service && docker compose -f docker-compose-dev.yml up -d --build fron
 ### Интеграционные тесты
 Интеграционные тесты находятся в папке `web_ui_service/tests` и монтируются в контейнер бэкенда. Запуск:
 ```bash
-docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_full_flow.py
+docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_full_flow.py --cfg /app/tests_integration/config-dev.json
