@@ -1,15 +1,28 @@
 # Deployment Rules
 
+В проекте поддерживаются два режима развертывания: **DEV** (разработка) и **PROD** (эксплуатация). Оба режима идентичны по структуре сетей, портам и используемым переменным окружения, что гарантирует консистентность работы системы.
+
+## Основные отличия
+
+| Характеристика | DEV (Разработка) | PROD (Эксплуатация) |
+| :--- | :--- | :--- |
+| **Скрипты запуска** | `start-dev.sh`, `stop-dev.sh` | `start-prod.sh`, `stop-prod.sh` |
+| **Docker Compose** | `docker-compose-dev.yml` | `docker-compose-prod.yml` |
+| **Образы (Images)** | Собираются локально (`build: .`) | Загружаются из GHCR (`image: ghcr.io/...`) |
+| **Код (Source Code)** | Монтируется внутрь (`volumes: ./src:/app`) | Запечен внутри образа |
+| **Перезагрузка** | Hot-reload (через монтирование) | Требует пересборки/перезапуска образа |
+
 - **DEV**: Использование скриптов `start-dev.sh` и `stop-dev.sh` для запуска групп сервисов с иерархической группировкой. Подробнее: [`docs/deployment/scripts.md`](docs/deployment/scripts.md).
 - **PROD**: Использование скриптов `start-prod.sh` и `stop-prod.sh`. Используются фиксированные образы из GHCR.
-- **Network**: PROD services must use external networks expected by `agent_service`.
-- **Ports**: PROD ports must strictly match `agent_service` environment variables.
+- **Network**: Все сервисы (DEV и PROD) используют внешние Docker-сети (`external: true`), которые создаются скриптами запуска. Это предотвращает конфликты меток при использовании нескольких проектов Compose.
+- **Volumes**: RAG сервис использует внешние тома (`rag_qdrant_storage`, `rag_redis_data`), которые являются общими для DEV и PROD, что гарантирует сохранность данных.
+- **Ports**: Порты в DEV и PROD идентичны, что обеспечивает прозрачность разработки.
 - **Test**: After push to GHCR, always test PROD by deleting local images and running `docker-compose-prod.yml`.
 
-## PROD Infrastructure
+## Infrastructure
 
 ### Сетевое взаимодействие (Aliases)
-Для стабильного взаимодействия в PROD используются следующие алиасы внутри Docker сетей:
+Для стабильного взаимодействия во всех режимах используются следующие алиасы внутри Docker сетей:
 - `agent-service` — Оркестратор.
 - `rag-api` — Поиск по базе знаний.
 - `test-generator-api` — Генерация тестов.
