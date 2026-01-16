@@ -51,3 +51,8 @@
 - **OpenRouter**
 - **OpenAI**
 - **Mistral**
+
+## NetRunner Protocol (v3.0)
+- **CLI-Priority**: Слэш-команды (`/finish_quizz`, `/skip_question`) обрабатываются в `planner_node` до вызова LLM.
+- **Quiz Context**: При RAG-уточнениях в квизе обязательно возвращать пользователя к вопросу через маркер `[SYSTEM: QUIZ_CONTEXT_RESUMED]`.
+- **Intents**: Новые типы `skip_question` и `evaluate_quiz` (для текстовых запросов).
