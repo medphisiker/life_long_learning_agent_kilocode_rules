@@ -26,6 +26,7 @@
 - `agent-service` — Оркестратор.
 - `rag-api` — Поиск по базе знаний.
 - `test-generator-api` — Генерация тестов.
+- `user-service` — Управление пользователями.
 - `web-backend` — Бэкенд интерфейса.
 - `web-frontend` — Фронтенд интерфейса.
 
@@ -35,6 +36,7 @@
 - `8270` — Agent Service.
 - `8000` — RAG API.
 - `52812` — Test Generator API.
+- `8001` — User Service API.
 
 ## PROD Images
 
@@ -44,3 +46,4 @@
 - `ghcr.io/lifelong-learning-assisttant/web_ui_backend:v001`
 - `ghcr.io/lifelong-learning-assisttant/web_ui_frontend:v001`
 - `ghcr.io/lifelong-learning-assisttant/agent_service:v001`
+- `ghcr.io/lifelong-learning-assisttant/user_service:v001`

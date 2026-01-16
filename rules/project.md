@@ -8,6 +8,7 @@
 - RAG сервис реализующий гибридный и семантический поиск по учебнику Яндекса по ML (`./rag`). Подробнее: [`rag/README.md`](rag/README.md) и [`.kilocode/rules/rag.md`](.kilocode/rules/rag.md)
 - Генератор квизов, позволяющий генерировать вопросы на основе markdown файлов (`./test_generator`). Подробнее: [`test_generator/README.md`](test_generator/README.md) и [`.kilocode/rules/test_generator.md`](.kilocode/rules/test_generator.md)
 - Web UI веб интерфейс с которым взаимодействует пользователь (`./web_ui_service`). Подробнее: [`web_ui_service/README.md`](web_ui_service/README.md) и [`.kilocode/rules/web_ui_service.md`](.kilocode/rules/web_ui_service.md)
+- Сервис Пользователей — управление аутентификацией, настройками и историей (`./user_service`). Подробнее: [`.kilocode/rules/user_service.md`](.kilocode/rules/user_service.md)
 
 ## Тестирование
 
