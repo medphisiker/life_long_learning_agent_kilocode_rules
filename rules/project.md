@@ -24,3 +24,4 @@ docker exec <container_name> <test_command>
 - **RAG**: `docker exec rag-api-dev uv run pytest tests/`
 - **Генератор тестов**: `docker exec llm-tester-api-dev uv run pytest tests/`
 - **NetRunner Scenarios**: `docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_netrunner_scenarios.py --cfg /app/tests_integration/config-dev.json`
+- **User Flow**: `docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_user_flow.py`
