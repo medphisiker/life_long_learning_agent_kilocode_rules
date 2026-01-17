@@ -22,11 +22,13 @@
 - **Цвета**: Primary Cyan (#00FFCC), Secondary Lime (#DAFF00), Background (#05070A).
 - **Формулы**: Использовать KaTeX для математических выражений. В режиме Preview Деки рендеринг должен быть мгновенным.
 
-## 4. NetRunner Protocol (v3.0)
+## 4. NetRunner Protocol (v3.1)
 При разработке узлов графа `AgentSystem` соблюдай следующие правила:
 - **CLI-команды**: Слэш-команды (`/finish_quizz`, `/skip_question`) имеют приоритет и должны обрабатываться в `planner_node` до вызова LLM.
 - **Контекст квиза**: При ответе на уточняющие вопросы (RAG) в процессе квиза, необходимо возвращать пользователя к текущему вопросу, используя маркер `[SYSTEM: QUIZ_CONTEXT_RESUMED]`.
+- **Interaction Modes**: Поддержка `interaction_mode` (`AI_SYNC`, `ANSWER_QUIZ`). Режим `ANSWER_QUIZ` принудительно устанавливает интент `quiz_answering`.
 - **Интенты**: Поддерживай новые типы интентов (`skip_question`, `evaluate_quiz`) в `IntentModel` и промптах.
+- **Message Types**: Новый тип `quizz_question` для отделения вопросов теста от обычных сообщений ассистента.
 
 ## 4. Документирование
 - Любые изменения в логике графа должны быть отражены в `agent_service/docs/agent_documentation.md` (включая Mermaid диаграммы).
