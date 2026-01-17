@@ -20,6 +20,7 @@
 
 - `docker-compose-dev.yml` — Окружение для разработки (локальная сборка).
 - `docker-compose-prod.yml` — Продакшн окружение (образы из GHCR).
+- `docker-compose-bootstrap.yml` — Инициализация базы знаний (скачивание бэкапов и импорт в Qdrant/Redis).
 - `settings.py` — Глобальные настройки проекта.
 - `.env.example` — Шаблон переменных окружения.
 
