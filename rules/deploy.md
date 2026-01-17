@@ -36,7 +36,7 @@
 - `8270` — Agent Service.
 - `8000` — RAG API.
 - `52812` — Test Generator API.
-- `8001` — User Service API.
+- `8010` — User Service API.
 
 ## PROD Images
 
