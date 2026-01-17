@@ -30,7 +30,7 @@
 ## Файлы конфигурации
 
 - `docker-compose-dev.yml` — Сборка для разработки с пробросом кода (volumes). Использует проект `lifelong_learning-agent`.
-- `docker-compose-prod.yml` — Запуск стабильной версии из GHCR с фиксированным образом (`ghcr.io/anton-admin/agent_service:latest`).
+- `docker-compose-prod.yml` — Запуск стабильной версии из GHCR с фиксированным образом (`ghcr.io/lifelong-learning-assisttant/agent_service:v001`).
 - `app_settings-dev.json` / `app_settings-prod.json` — Настройки уровней окружения. В DEV используются алиасы (например, `http://agent-service:8270`).
 - `.env_example` — Шаблон переменных окружения (API ключи).
 

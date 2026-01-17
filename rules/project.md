@@ -19,6 +19,13 @@
 docker exec <container_name> <test_command>
 ```
 
+**Развертывание на новом сервере (Bootstrap):**
+Для первичной инициализации баз данных и загрузки знаний используйте:
+```bash
+./init-new-server.sh
+```
+Скрипт выполнит загрузку бэкапов в RAG и применит миграции в User Service. Подробнее: [`docs/deployment/update-prod.md`](docs/deployment/update-prod.md).
+
 **Примеры для DEV окружения:**
 - **Агент**: `docker exec lifelong_learning-agent-agent_dev-1 env APP_SETTINGS_PATH=app_settings-dev.json uv run pytest tests/`
 - **RAG**: `docker exec rag-api-dev uv run pytest tests/`
