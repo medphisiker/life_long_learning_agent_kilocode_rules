@@ -73,7 +73,20 @@
 - **IDE Layout**: Глобальный скроллинг страницы отключен (`overflow-hidden` в `main.tsx`). Каждая панель (Чат, Теория, Код) имеет независимый внутренний скроллинг.
 - **Quiz UI**: Ответы пользователя в режиме квиза маркируются как `QUIZZ-ANSWER` и подсвечиваются Cyan-цветом.
 
-### Интеграционные тесты
-Интеграционные тесты находятся в папке `web_ui_service/tests` и монтируются в контейнер бэкенда. Запуск:
+### Интеграционные тесты (NetRunner Scenarios)
+Интеграционные тесты находятся в папке `web_ui_service/tests` и монтируются в контейнер бэкенда по пути `/app/tests_integration/`.
+
+**Ключевые особенности (v3.2):**
+- **Traceability**: Сессии тестов используют префиксы для идентификации сценария: `direct_*`, `rag_*`, `quiz_*`.
+- **Observability**: Все тесты автоматически сохраняют текстовые логи в папку `web_ui_service/tests/logs/`. Логи содержат полную цепочку WebSocket-событий с метаданными.
+
+**Запуск сценариев:**
 ```bash
-docker exec web-ui-backend-dev uv run python /app/tests_integration/test_netrunner_scenarios.py --cfg /app/tests_integration/config-dev.json
+# General Chat
+docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_scenario_general.py --cfg /app/tests_integration/config-dev.json
+
+# RAG Search
+docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_scenario_rag.py --cfg /app/tests_integration/config-dev.json
+
+# Quiz Flow
+docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_scenario_quiz.py --cfg /app/tests_integration/config-dev.json
