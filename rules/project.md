@@ -27,8 +27,8 @@ docker exec <container_name> <test_command>
 Скрипт выполнит загрузку бэкапов в RAG и применит миграции в User Service. Подробнее: [`docs/deployment/update-prod.md`](docs/deployment/update-prod.md).
 
 **Примеры для DEV окружения:**
-- **Агент**: `docker exec lifelong_learning-agent-agent_dev-1 env APP_SETTINGS_PATH=app_settings-dev.json uv run pytest tests/`
+- **Агент**: `docker exec agent-service-dev env APP_SETTINGS_PATH=app_settings-dev.json uv run pytest tests/`
 - **RAG**: `docker exec rag-api-dev uv run pytest tests/`
-- **Генератор тестов**: `docker exec llm-tester-api-dev uv run pytest tests/`
-- **NetRunner Scenarios**: `docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_netrunner_scenarios.py --cfg /app/tests_integration/config-dev.json`
-- **User Flow**: `docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_user_flow.py`
+- **Генератор тестов**: `docker exec test-generator-dev uv run pytest tests/`
+- **NetRunner Scenarios**: `docker exec web-ui-backend-dev uv run python /app/tests_integration/test_netrunner_scenarios.py --cfg /app/tests_integration/config-dev.json`
+- **User Flow**: `docker exec web-ui-backend-dev uv run python /app/tests_integration/test_user_flow.py`

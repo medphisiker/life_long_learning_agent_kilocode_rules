@@ -76,4 +76,4 @@
 ### Интеграционные тесты
 Интеграционные тесты находятся в папке `web_ui_service/tests` и монтируются в контейнер бэкенда. Запуск:
 ```bash
-docker exec web_ui_service-backend-dev uv run python /app/tests_integration/test_netrunner_scenarios.py --cfg /app/tests_integration/config-dev.json
+docker exec web-ui-backend-dev uv run python /app/tests_integration/test_netrunner_scenarios.py --cfg /app/tests_integration/config-dev.json
