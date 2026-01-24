@@ -20,18 +20,12 @@
 - **Passlib**: Хеширование паролей (используется `bcrypt==4.0.1` для совместимости).
 - **Python-jose**: Работа с JWT токенами.
 
-## Структура проекта
+## Ключевые файлы (Key Files Map)
 
-- `app/api/` — Роуты для аутентификации, настроек и истории.
-- `app/core/` — Конфигурация, безопасность и JWT логика.
-- `app/db/` — Инициализация БД и асинхронные сессии.
-- `app/models/` — Определение таблиц SQLAlchemy.
-- `app/schemas/` — Pydantic модели для API.
-- `scripts/register_user.py` — CLI инструмент для регистрации пользователей администратором.
-- `scripts/list_users.py` — Просмотр списка всех пользователей и их ролей.
-- `scripts/delete_user.py` — Удаление пользователя и связанных данных.
-- `scripts/bulk_create_users.py` — Массовое создание пользователей из JSON.
-- `scripts/bulk_delete_users.py` — Массовое удаление пользователей из JSON.
+- [`app/api/`](user_service/app/api/:1) — Роуты для Auth, User Profile и Session History.
+- [`app/models/`](user_service/app/models/:1) — **Схема данных**. Определение таблиц пользователей, настроек и результатов квизов.
+- [`app/core/auth.py`](user_service/app/core/auth.py:1) — Логика JWT, хеширования паролей и OAuth2.
+- [`scripts/`](user_service/scripts/:1) — Утилиты для администрирования (регистрация, удаление, массовое создание пользователей).
 
 ## Взаимодействие
 

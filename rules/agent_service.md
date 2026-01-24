@@ -11,18 +11,15 @@
 ### Динамические настройки (v2.0)
 Сервис поддерживает динамическую смену провайдеров и моделей LLM для каждого запроса через объект `AppSettings`. Настройки пробрасываются в инструменты (RAG, Test Generator) для консистентности ответов.
 
-## Структура проекта
+## Ключевые файлы (Key Files Map)
 
-- `app.py` — Точка входа FastAPI, настройка роутов и middleware.
-- `agent_system.py` — Глобальная система управления агентами и состоянием сессий.
-- `agent_session.py` — Логика отдельной сессии агента (state machine).
-- `llm_service/` — Модуль взаимодействия с LLM провайдерами.
-    - `llm_client.py` — Универсальный клиент (OpenAI, OpenRouter, Mistral, Z.ai).
-    - `utils.py` — Вспомогательные функции для обработки HTTP-ответов и таймаутов.
-- `prompts/` — Шаблоны системных и функциональных промптов.
-- `langchain_tools.py` — Определение инструментов (tools) для LangChain агента.
-- `settings.py` — Конфигурация через Pydantic Settings.
-- `logger.py` — Настройка логирования.
+- [`app.py`](agent_service/app.py:1) — **Точка входа FastAPI**. Настройка роутов, middleware и WebSocket-интеграции.
+- [`agent_system.py`](agent_service/agent_system.py:1) — **Оркестратор сессий**. Управляет пулом `AgentSession`, лимитами конкурентности и очисткой ресурсов.
+- [`agent_session.py`](agent_service/agent_session.py:1) — **Ядро агента (State Machine)**. Реализация графа LangGraph, управление состоянием отдельного диалога и уведомлениями UI.
+- [`llm_service/llm_client.py`](agent_service/llm_service/llm_client.py:1) — **Универсальный LLM клиент**. Абстракция над провайдерами (OpenRouter, Z.ai и др.).
+- [`prompts/`](agent_service/prompts/:1) — **Библиотека промптов**. Системные инструкции, шаблоны классификации интентов и подготовки материалов.
+- [`langchain_tools.py`](agent_service/langchain_tools.py:1) — **Инструменты агента**. Определение функций, которые LLM может вызывать (RAG search, Test generation).
+- [`settings.py`](agent_service/settings.py:1) — Глобальная конфигурация через Pydantic Settings.
 - `tests/` — Тестовое покрытие:
     - `components/` — Юнит-тесты компонентов и интеграций с провайдерами.
     - `pipeline/` — Интеграционные тесты сценариев (RAG, Quiz, Chit-chat).
@@ -62,9 +59,4 @@
 - **Mistral**
 
 ## NetRunner Protocol (v3.2)
-- **CLI-Priority**: Слэш-команды (`/finish_quizz`, `/skip_question`) обрабатываются в `planner_node` до вызова LLM.
-- **Quiz Context**: При RAG-уточнениях в квизе обязательно возвращать пользователя к вопросу через маркер `[SYSTEM: QUIZ_CONTEXT_RESUMED]`.
-- **Interaction Modes**: Поддержка `interaction_mode` (`AI_SYNC`, `ANSWER_QUIZ`). Режим `ANSWER_QUIZ` принудительно устанавливает интент `quiz_answering`.
-- **Intents**: Новые типы `skip_question` и `evaluate_quiz` (для текстовых запросов).
-- **Message Types**: Новый тип `quizz_question` для отделения вопросов теста от обычных сообщений ассистента.
-- **Planner Logic (v3.2)**: В режиме активного квиза короткие сообщения без знака вопроса принудительно классифицируются как `quiz_answering`, даже если LLM определила `general` или `rag_answer`. Для корректной работы `interaction_mode` и `mode` пробрасываются в `AgentState`.
+- Спецификация вынесена в [`netrunner_protocol.md`](netrunner_protocol.md).

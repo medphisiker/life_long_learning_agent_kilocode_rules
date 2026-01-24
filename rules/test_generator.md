@@ -2,21 +2,17 @@
 
 Сервис на базе FastAPI для автоматической генерации вопросов, проведения экзаменов и оценки ответов с использованием LLM (OpenAI/Yandex).
 
-## Структура проекта
+## Ключевые файлы (Key Files Map)
 
-- `app/` — Основной код приложения.
-    - `api/` — Эндпоинты FastAPI (генерация, проверка ответов, загрузка файлов, healthcheck).
-    - `core/` — Бизнес-логика:
-        - `generator.py` — Логика создания вопросов.
-        - `grader.py` — Оценка ответов пользователя.
-        - `parser.py` — Парсинг входных данных (Markdown).
-        - `exam_builder.py` — Сборка структуры экзамена.
-    - `models/` — Pydantic схемы для API.
-    - `services/` — Интеграция с внешними API (OpenAI, Yandex Cloud).
-    - `prompts/` — Системные промпты для LLM (RU/EN).
+- [`app/api/`](test_generator/app/api/:1) — Эндпоинты FastAPI (генерация, проверка ответов, загрузка файлов, healthcheck).
+- [`app/core/generator.py`](test_generator/app/core/generator.py:1) — **Логика создания вопросов**.
+- [`app/core/grader.py`](test_generator/app/core/grader.py:1) — **Оценка ответов пользователя**.
+- [`app/core/parser.py`](test_generator/app/core/parser.py:1) — **Парсинг входных данных** (Markdown).
+- [`app/core/exam_builder.py`](test_generator/app/core/exam_builder.py:1) — Сборка структуры экзамена.
+- [`app/prompts/`](test_generator/app/prompts/:1) — Системные промпты для LLM (RU/EN).
 - `data/` — Локальное хранилище данных (загрузки, результаты).
 - `docs/` — Техническая документация и архитектурные планы.
-- `tests/` — Тестовое покрытие (Unit, Integration, BDD).
+- `tests/` — Тестовое покрытие (Unit, Integration, BDD). Команды запуска в [`testing.md`](testing.md).
 - `examples/` — Примеры использования и примеры входных данных.
 
 ## Файлы конфигурации
