@@ -9,6 +9,7 @@
 | **Python** | `3.13` | Базовая версия для всех новых сервисов (`agent_service`, `web_ui_service`, `user_service`). |
 | **uv** | `0.9.26` | Пакетный менеджер. Использовать `pip install uv==0.9.26` в Dockerfile. |
 | **Node.js** | `LTS` | Для фронтенда (React). |
+| **LLM (Agent)** | `Gemini 3 Flash` | Основная модель через `ai-mediator.ru`. |
 
 ### Исключения
 Сервисы `rag` и `test_generator` могут использовать другие версии (см. их `Dockerfile`), так как управляются отдельными командами.

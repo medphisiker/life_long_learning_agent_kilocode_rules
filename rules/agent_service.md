@@ -53,9 +53,9 @@
 При запуске через `docker-compose-dev.yml` агент ожидает, что сервисы `rag`, `test_generator` и `web_ui_service` уже запущены и их сети доступны.
 
 ## Поддерживаемые провайдеры LLM
-- **Z.ai** (по умолчанию, модель `glm-4.6v`)
+- **OpenAI** (через `ai-mediator.ru`, модель по умолчанию `gemini-3-flash-preview`)
+- **Z.ai** (модель `glm-4.6v`)
 - **OpenRouter**
-- **OpenAI**
 - **Mistral**
 
 ## NetRunner Protocol (v3.2)
