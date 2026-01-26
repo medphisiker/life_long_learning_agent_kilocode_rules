@@ -22,7 +22,7 @@
 
 ## Файлы конфигурации
 
-- `docker-compose-dev.yml` — Окружение для разработки (локальная сборка). **Важно**: требует наличия внешних томов `rag_qdrant_storage` и `rag_redis_data`.
+- `docker-compose-dev.yml` — Окружение для разработки (локальная сборка). **Важно**: требует наличия внешних томов `rag_qdrant_storage`, `rag_redis_data` и локального тома `rag_fastembed_cache` для кэширования моделей.
 - `docker-compose-prod.yml` — Продакшн окружение (образы из GHCR).
 - `docker-compose-bootstrap.yml` — Инициализация базы знаний. Использует скрипт `bootstrap_and_restore.sh` для скачивания бэкапов, очистки старых AOF файлов Redis и восстановления данных.
 - `settings.py` — Глобальные настройки проекта.
