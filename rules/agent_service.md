@@ -19,10 +19,14 @@
 - [`llm_service/llm_client.py`](agent_service/llm_service/llm_client.py:1) — **Универсальный LLM клиент**. Абстракция над провайдерами (OpenRouter, Z.ai и др.).
 - [`prompts/`](agent_service/prompts/:1) — **Библиотека промптов**. Системные инструкции, шаблоны классификации интентов и подготовки материалов.
 - [`langchain_tools.py`](agent_service/langchain_tools.py:1) — **Инструменты агента**. Определение функций, которые LLM может вызывать (RAG search, Test generation).
+- [`graphs/`](agent_service/graphs/:1) — **Подграфы LangGraph**:
+    - `chat.py` — Логика свободного общения (Router, Direct Answer, Full Answer).
+    - `retrieval.py` — Логика поиска (RAG, Web, Docs).
 - [`settings.py`](agent_service/settings.py:1) — Глобальная конфигурация через Pydantic Settings.
 - `tests/` — Тестовое покрытие:
     - `components/` — Юнит-тесты компонентов и интеграций с провайдерами.
     - `pipeline/` — Интеграционные тесты сценариев (RAG, Quiz, Chit-chat).
+    - `scenarios/` — Тесты отдельных подграфов (Chat, Retrieval).
 
 ## Файлы конфигурации
 
